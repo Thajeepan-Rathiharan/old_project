@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jujutsu Kaisen</title>
+    <link rel="stylesheet" href="CSS/style.css" />
+  </head>
+  <body>
+    <div class="loader-container">
+      <div class="loader"></div>
+    </div> 
+    
+    <div class="container">
+      </div>
+
+      <div class="bgImg"></div>
+
+      <div class="bgVid">
+        <video class="vid" src="vid/bgVidAnime.mp4" preload="auto"></video>
+      </div>
+
+      <div class="content">
+        <div class="hero">
+          <h1 class="heading">Jujutsu Kaisen</h1>
+          <h1 class="info">A Manga Series</h1>
+        </div>
+      </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          console.log("loaded");
+          // Get the video element
+          var video = document.querySelector(".vid");
+          const loaderContainer = document.querySelector(".loader-container");
+          const loader = document.querySelector(".loader");
+          const container = document.querySelector(".container");
+          var isLoaded = false;
+          console.log(video);
+  
+  
+          video.addEventListener("canplay", function () {
+            isLoaded = true;
+            loader.style.display = "none";
+            loaderContainer.style.display = "none";
+            container.style.display = "block";
+  
+            // Play the video
+            if (isLoaded) {
+              document.addEventListener("click", function eventHandler() {
+                video.play();
+                video.muted = false;
+                this.removeEventListener("click", eventHandler);
+              });
+            }
+          });
+  
+          video.onended = function () {
+            video.remove();
+            document.querySelector(".bgImg").style.display = "block";
+          };
+        });
+      </script>
+
+      <div class="footer">
+        <a href="https://github.com/Thajeepan-Rathiharan" target="_blank"
+          ><div class="footer-item">© Thajeepan Rathiharan</div></a
+        >
+      </div>
+    </div>
+  </body>
+</html>
